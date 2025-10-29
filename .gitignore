@@ -1,0 +1,5 @@
+# Environment files
+.env
+rosterbridge-backend/.env
+.env.local
+.env.*.local
