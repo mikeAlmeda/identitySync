@@ -27,6 +27,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("db connect: %v", err)
 	}
+	if err := db.EnsureIndexes(ctx); err != nil {
+		log.Fatalf("ensure indexes: %v", err)
+	}
 	defer func() {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
