@@ -13,6 +13,7 @@ type Student struct {
 	SourceID   string             `bson:"source_id" json:"source_id"`
 	FirstName  string             `bson:"first_name" json:"first_name"`
 	LastName   string             `bson:"last_name" json:"last_name"`
+	Email      string             `bson:"email" json:"email"`
 	GradeLevel string             `bson:"grade_level" json:"grade_level"`
 	SchoolID   string             `bson:"school_id" json:"school_id"`
 	CreatedAt  time.Time          `bson:"created_at" json:"created_at"`
