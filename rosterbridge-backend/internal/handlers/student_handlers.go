@@ -16,8 +16,11 @@ func GetStudentsHandler(st store.StudentStore) http.HandlerFunc {
 			return
 		}
 		w.Header().Set("Content-Type", "application/json")
-		if err := json.NewEncoder(w).Encode(students); err != nil {
+		data, err := json.MarshalIndent(students, "", " ")
+		if err != nil {
 			http.Error(w, "failed to encode response: "+err.Error(), http.StatusInternalServerError)
+			return
 		}
+		w.Write(data)
 	}
 }

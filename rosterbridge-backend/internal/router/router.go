@@ -10,6 +10,7 @@ func RegisterRoutes(r chi.Router) {
 	st := store.NewMongoStudentStore()
 
 	r.Get("/students", handlers.GetStudentsHandler(st))
+	r.Post("/sync", handlers.SyncHandler(st))
 
 	// Additional routes can be registered here, injecting 'st' as needed.
 }
