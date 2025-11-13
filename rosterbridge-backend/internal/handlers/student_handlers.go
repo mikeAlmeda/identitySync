@@ -1,26 +1,26 @@
 package handlers
 
 import (
-	"context"
 	"encoding/json"
 	"net/http"
 
-	"github.com/mikeAlmeda/rosterbridge-backend/internal/db"
-	"github.com/mikeAlmeda/rosterbridge-backend/internal/models"
+	"github.com/mikeAlmeda/rosterbridge-backend/internal/store"
 )
 
-func GetStudents(w http.ResponseWriter, r *http.Request) {
-	cursor, err := db.StudentCollection.Find(context.Background(), map[string]any{})
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+func GetStudentsHandler(st store.StudentStore) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		ctx := r.Context()
+		students, err := st.GetAll(ctx, map[string]interface{}{})
+		if err != nil {
+			http.Error(w, "failed to fetch students: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		data, err := json.MarshalIndent(students, "", " ")
+		if err != nil {
+			http.Error(w, "failed to encode response: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		w.Write(data)
 	}
-
-	var students []models.Student
-	if err := cursor.All(context.Background(), &students); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	json.NewEncoder(w).Encode(students)
 }
