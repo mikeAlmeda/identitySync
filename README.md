@@ -98,13 +98,17 @@ identitySync/
 
 ## Screenshots
 
-![API Calls](rosterbridge-backend/screenshots/api-calls.png)
-
-*Backend server logs showing successful sync operation and API response times.*
+*Student roster dashboard*
 
 ![Student Directory UI](rosterbridge-backend/screenshots/student-directory-ui.png)
 
-*Student roster dashboard after clicking "Sync Students"—displays 5 mock students with source IDs, names, grades, and timestamps.*
+*After clicking "Sync Students"—displays 5 mock students with source IDs, names, grades, and timestamps*
+
+![Student Sync UI](rosterbridge-backend/screenshots/student-sync-ui.png)
+
+*Backend server logs showing successful sync operation and API response times.*
+
+![API Calls](rosterbridge-backend/screenshots/api-calls.png)
 
 ## Why I Built This
 
