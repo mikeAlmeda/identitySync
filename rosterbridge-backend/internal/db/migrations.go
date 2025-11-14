@@ -17,10 +17,6 @@ func EnsureIndexes(ctx context.Context) error {
 			Options: options.Index().SetUnique(true).SetName("idx_source_id"),
 		},
 		{
-			Keys:    bson.D{{Key: "email", Value: 1}},
-			Options: options.Index().SetName("idx_email"),
-		},
-		{
 			Keys:    bson.D{{Key: "updated_at", Value: -1}},
 			Options: options.Index().SetName("idx_updated_at_desc"),
 		},

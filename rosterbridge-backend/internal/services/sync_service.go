@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"time"
 
@@ -45,11 +46,12 @@ func (s *SyncService) SyncStudents(ctx context.Context) (*SyncResults, error) {
 
 		// Transform external data to our Student model
 		student := models.Student{
-			SourceID:  extStudent.SourceID,
-			FirstName: extStudent.FirstName,
-			LastName:  extStudent.LastName,
-			Email:     extStudent.Email,
-			UpdatedAt: time.Now().UTC(),
+			SourceID:   extStudent.SourceID,
+			FirstName:  extStudent.FirstName,
+			LastName:   extStudent.LastName,
+			GradeLevel: fmt.Sprintf("%d", extStudent.Grade),
+			SchoolID:   extStudent.SchoolID,
+			UpdatedAt:  time.Now().UTC(),
 		}
 
 		if existing != nil {
@@ -93,19 +95,20 @@ func (s *SyncService) findBySourceID(ctx context.Context, sourceID string) (*mod
 // fetchMockRosterData simulates fetching from an external API.
 func (s *SyncService) fetchMockRosterData() []ExternalStudent {
 	return []ExternalStudent{
-		{SourceID: "clever-001", FirstName: "Alice", LastName: "Johnson", Grade: 9},
-		{SourceID: "clever-002", FirstName: "Bob", LastName: "Smith", Grade: 10},
-		{SourceID: "clever-003", FirstName: "Charlie", LastName: "Brown", Grade: 11},
-		{SourceID: "clever-004", FirstName: "Homer", LastName: "Simpson", Grade: 12},
-		{SourceID: "clever-005", FirstName: "Barney", LastName: "Gumble", Grade: 8},
+		{SourceID: "clever-001", FirstName: "Alice", LastName: "Johnson", Grade: 9, SchoolID: "spruce-high"},
+		{SourceID: "clever-002", FirstName: "Bob", LastName: "Smith", Grade: 10, SchoolID: "central-high"},
+		{SourceID: "clever-003", FirstName: "Charlie", LastName: "Brown", Grade: 11, SchoolID: "peanuts-academy"},
+		{SourceID: "clever-004", FirstName: "Homer", LastName: "Simpson", Grade: 12, SchoolID: "springfield-high"},
+		{SourceID: "clever-005", FirstName: "Barney", LastName: "Gumble", Grade: 8, SchoolID: "jebediah-middle"},
+		{SourceID: "clever-006", FirstName: "Lisa", LastName: "Simpson", Grade: 7, SchoolID: "springfield-elementary"},
 	}
 }
 
-// ExternalStudent represents data forma n external roster API.
+// ExternalStudent represents data from an external roster API.
 type ExternalStudent struct {
 	SourceID  string
 	FirstName string
 	LastName  string
-	Email     string
 	Grade     int
+	SchoolID  string
 }

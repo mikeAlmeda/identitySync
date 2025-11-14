@@ -6,7 +6,6 @@ export interface Student {
     first_name: string;
     last_name: string;
     grade_level: number;
-    email: string;
     school_id: string;
     created_at: string;
     updated_at: string;
