@@ -102,7 +102,7 @@ identitySync/
 
 ![Student Directory UI](rosterbridge-backend/screenshots/student-directory-ui.png)
 
-*After clicking "Sync Students"—displays 5 mock students with source IDs, names, grades, and timestamps*
+*After clicking "Sync Students" displays 6 mock students source IDs, names, grades, and timestamps*
 
 ![Student Sync UI](rosterbridge-backend/screenshots/student-sync-ui.png)
 
