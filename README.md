@@ -4,7 +4,7 @@ A full-stack student roster synchronization platform built with Go, MongoDB, Rea
 
 ## Overview
 
-RosterBridge simulates the core workflow of platforms like Clever: fetching student roster data from external sources, normalizing records, and exposing them through a REST API and admin dashboard. Built as preparation for the Clever Software Engineer Apprenticeship, this project showcases repository patterns, idempotent sync operations, database migrations with indexes, unit testing with mocks, and type-safe frontend development.
+RosterBridge simulates the core workflow of platforms like Clever: fetching student roster data from external sources, normalizing records, and exposing them through a REST API and admin dashboard. This project showcases repository patterns, idempotent sync operations, database migrations with indexes, unit testing with mocks, and type-safe frontend development.
 
 ## Tech Stack
 
